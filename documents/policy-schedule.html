@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+    <style>
+      html {
+        font-size: 10px;
+        line-height: 1.1;
+      }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      .page {
+        page-break-after: always;
+        position: relative;
+      }
+
+      .page.no-break {
+        page-break-after: auto;
+      }
+
+      .border {
+        border-collapse: collapse;
+      }
+
+      .border tr {
+        border: solid;
+        border-width: 1px 0;
+        border-color: #CCCCCC;
+      }
+
+      td {
+        vertical-align: top;
+      }
+
+      .stamp {
+        font-weight: bolder;
+        color: #BD10E0;
+        position: absolute;
+        left: 10%;
+        top: 25%;
+        z-index: 2;
+        text-align: center;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+      }
+
+      .stamp h1 {
+        font-size: 6rem;
+      }
+
+      .stamp h2 {
+        font-size: 2.5rem;
+      }
+
+      .header-logo img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page no-break">
+      {{#sandbox}}
+      <div class="stamp">
+        <h1>- VOID -</h1>
+        <h2>for demo purposes only</h2>
+      </div>
+      {{/sandbox}}
+      <div class="header-logo">
+        <img height="60" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABeCAYAAACZ4CkLAAAACXBIWXMAAAsSAAALEgHS3X78AAALtUlEQVR4nO2dP3LbuhbGv2SuanEBnLGyAvutwFTNIr4rsLKCKN1VFaVSGd8VWF7BswvWpFfwpBU8eYb9o9qrIq/AkS07koxDAhJJfb8ZzeQPCICU8PEAODjnQ/TXPxcAMgBdEB8sAUTppDM7dkcIaTofQbHyTRfmGRNCKvIRFKtDwGdMiAM+HrsDhBBiCwWLENIYKFiEkMZAwSKENIY/9v1nOul8OFRH2kB/tPp17D4Q0mZoYRFCGgMFixDSGChYhJDGQMEihDSGvYvuhBCiJQjjAYDBniIFgEGRJ4W2bgoWIcQZQRj3ANxaFM0AXGjr55SQEOKSnmW58zKVU7AIIY2BgkUIaQzO1rD6o9UA+xfamsg0nXSmx+4EIcTgRLBErGwW2prGZX+0AkWLkHrgako4cFRPHRkcuwOEEAPXsAghjYGCRQhpDBQsQkhjoKc7cUIQxlcwnssRgADGMXAJYJ3eLANwX+SJt3RnQRhfSB960o9dLOSTAZiVOSJyKIIwDvDyXHvY75iZwdzXzOdzPiaHEKxvePnR1pULAD+P3Yk6EITxFMD1niJfijyZbpQfABgDONtStgvgUv58CeB7EMaPAMZFnmTVe/ssUgMAVzv6sI11n75LHXMAUwDTOoiXiNQVzH1d7i/9iueyQRg/wQjYjWvxku+8sldAEMY2AS/nAKL193IIwZqlk052gHZK0x+tjt2FWhCE8RD7xQoAboMwnuHFQtEesbgEcA9jhZUmCOMIRig1A3oX5zAvrJ9BGN/BCOrCQb0qRKiG8qmaGu4M5ru8dvmSkBfEIV2YzmFeJlcA17DIa2xFJEI5sVrTlR++miCMgyCM7wGkcCNWb7kGMAvCeOyh7p3Iy2IBY/W5zmN5CSANwjiTw8lVqPSiqdomBYuU4SfKixUALMtMU8SqWgD4XKFtG7ow09eZWD3e2BDgn/CfcPcSRowHntvxBgWLHIN77QUyyFIcNov2OYBFWWvwPUQMM/gX4E26MNP68QHbdAYFixyDG01hV4u8JekCyFyL1oZYVbFUq/C9iaJFwSKH5kkzHZRp4LHPqXYB3LuaHtZArNZ8b9r0sPF+WP3RqgezqxLh5Qcwh5l23KSTztG3qckrrK0rGdjq6aMnzrCxW1WRMY4vVmtugjDW+G0tYPzrDjk1f+5bowWrP1oNsd1/6lw+w/5oNWS0hYOx6SgKbN/F0wjQFOUGxpNcm2HDMXTDsTSCER5t3Z+DML4q8qS0iIrF+LXEpUuYZ5dhwzFUdv16MPc0gL0v2pouzEsksilc5MlC7mHXi2ftNGzDo0WZWZEnw/VfGitY/dFqDHH820MXwC1DxHhnCWC46VC6Rjzgr2AGVWbr3ySDQrsY/ST92CooMshnAKYbPk/v/YbecoNqVt+0xDU/YBxAf5styPNcwAjZWJ7bFDrhugzCeLDt+9uGPMdo2/9J+6llPVvr2EetBKs/Wq1/RDZofmg3/dHqntNDL7zyRH6LiEeZAT5Wln+AIhOLlBsHYZzB9M/W2jrTDO5NZL1IIyRLAFcah88iT9YbBFPoBH+McmJ6UGojWCJWGfzM7bswQjj2UPcps8QesSqLvKU1TqF3RZ4MyrQlAzyC+e3ZitYY5Qb3WFF2/WzV/mryfVyJf5etaJ0FYRy5OjLlizrtEg7hdyHSxWIpec3Q09m7gaLsE+yt8q2IKGjqONO6OUh5jXU1cHAGcADzfDTla02dBMs3ddmVaQtPZaZFlrx3nnGTUgk53yL3YrMI/NyusglN+ccqC/tr5LlohLj2L/VTEiziFi/uBrJIb8vc8RRmrCgbKevW3Fcli3ETET5bK6v0Gc9DcUqCpTGNyftMPdWrGTAqj/n3EPGz/Z1YW+ziemA7HZx7iGWleU6R47adckqCVRcHxFbgMUBcpCjr4zu1rlMW623o+WhfQaYoW2sLqza7hO/w1iER0IcWcfo2PnHmHuvu2fbB04K/DyGOFGUz140XeTILwti2eM91+y5pimDN0kkn2vyH/mg1hf3i7Ld00lk47tMp49OfzXbq5KsPC0XZCO4Fxpfl+gg/8cMOSmOnhOmkMwBwZ1H0Rzrp0LpqH5mnehce6rQ+NF2DEM21FrXGChbwLFp9GC/ntzwA6KeTzviQfSLNxlNo5FqvCzWJpkwJdyLx4rMjd4MQcgAabWER4hoHMc+34Wtd6uSgYJGmEnmqt+ehTut1KY8x5G3r1Xj7HxwKFqkbto6bvga2Zr0pO3L7GlpxNI2CRerGwrLcuSdrJFKUtbWcNFNCTftWKBxcgZpPXylYpG5oBozTw7oigJFteWVYYVt8HEDW1FlrwWr8LuE2JM57T3EJt53rg2bADOH2TKMmbLL1Wo94mtvGQT93GZdKRHiguMRJu75onWD1R6sL6IKxkXqRKco6G9wysMeKS7Rn/jLYB9Mbw93UcAj7sfDkyQ/NGa2aEopllYFi1VhkwGjOKk4drWWNoQuwpxUsTflLZZidrUioGE0o8doHCGiVYMFMAylWzUdzlGqdfqs0Emtdk8nmQWuJSIDApeKSaZXYVCVTpB30CFsZn7e2CRZpB/fQDe7PQRiXSnQahPEQ+kStZQe25rp1xulI24gIXQadxXh3hOngQHsBBYvUDjkArBWFzwBmtpmMgzDuScacbXkt9/FYYc3sBjoh7gJIgzC+sRHjIIwDST+fQe93NVaW34Vm0+R7EMbTIIwj25dN2xbdF3CflbbW27xtpciTcYm0WGcAbmXQ3sMM3IXs0vVglgwuYHYDy0YlGJS8DkWeFEEY30CfC/ErgK9BGD/A3NcCkiBWLLAA5p40u5yb/HBlXUmfnmD/vV3LBztidr3KHtQqC0tiXrmch9+lk46z+NpEzaDkdWcwg/zfAP4ThPEvAP+FSfD5E+XF6lvVgV3kyRjlAyB+hpm+pgD+J/eVwtznNcqJ1Rzu164yh3WtM1MDaJ+FBZibu4KdSXwnIWpIDZGcgT+gt0h8cFfkiauBfQVjuR97g2gJR1mH3nADXeYja1plYQGAZHeOYPcWu5bIpaSmiEViE6jRJ3O4zWSzgPmNatazXFM6Uet7SJ1eDlG3TrAAilbbkKzOxxKtR3jIbi2DOsJxRMubWG0wgId7a6VgARSttiGi9e3Azf5d5IlzsVqzIVo+k3q8ZQ7/YuXNimyKYF32R6uB9iKKVruQNaR/wX/MpicA/SJPvG+4FHkyK/LkAsAP321JG97Fao0PQW6KYAHALUXLOz7CpThFBngE4AvcJ8d9AvClyJOe44zS7yJrdZ/gZ+p7B+BTkSfjQye52BDkLygvXM99rpNg2TxIipZHxIJ5b8DM4c7JsDRFnkyLPOnBJCG5Q/mpx1Ku/1OEauqmh3qKPFnI1PcTzPS3imUylzo+FXkyOPahZvm+LmDu7QuAv2Es5fc+D9hwb/kQ/fXPr12NpJPOB5vO9EerDLt9W/qSKOK9OgLYe+h+SSedqU3fKrShdnnoj1aVnyUpjxxJuYBxEI32FJ3hxfky892vKmzE6FrfV29H0YV8ZgCyGqQL80Jt/LDSSafoj1YR7ATltj9aQStayjaupY2Bpg1yPGTNpFUnE0R47tGASAqHoE5TQu3UjdNDQk6MWgkWQNEihOymdoIFULQIIduppWABFC1CyO/UVrAAihYh5DW1FiyAokUIeaH2ggVQtAghhkYIFkDRIoQ0SLAAihYhp06jBAugaBFyyjROsACKFiGnSiMFC6inaGnrJ4ToaKxgAbUULUKIRxotWABFi5BTovGCBVC0CDkVWiFYAEWLkFOgNYIFULQIaTutEiyAokVIm2mdYAEULULaSisFCyglWj3PbRBCKvIRu9MjaQbhrsD/S5hMHkdBKSg3Fdt42FPsGOnICWkdH7E9nfQc+9MkvSKddIb4PZ/dEkCUTjqL8t2rzoag7MsWvESFXHvppFOkk84VgD/x+7NcQvEsCSG7+fDr185UeoQQUitau4ZFCGkfFCxCSGOgYBFCGsP/AbzxwlrHRujUAAAAAElFTkSuQmCC" />
+      </div>
+      <br>
+      <br>
+      <h1 style="text-align: center"><strong>POLICY SCHEDULE</strong></h1>
+      <br>
+      <br>
+      <table class="border" style="width: 100%" cellpadding="10">
+        <tr>
+          <td>
+            <strong>Policy Number</strong>
+          </td>
+          <td>
+            {{policy.policy_number}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Name of Insured</strong>
+          </td>
+          <td>
+              {{policyholder.first_name}} {{policyholder.last_name}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Contact Details of the Insured</strong>
+          </td>
+          <td>
+            Email Address: {{policyholder.email}}
+            <br>
+            Contact Telephone Number: {{policyholder.cellphone}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Cover Amount</strong>
+          </td>
+          <td>
+            {{zarString policy.module.cover_amount}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Monthly Premium</strong>
+          </td>
+          <td>
+            {{zarString policy.monthly_premium}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Period of Insurance</strong>
+          </td>
+          <td>
+            From {{dateFormat policy.start_date format='DD MMM YYYY'}} to {{dateFormat (dateAdd policy.start_date years=1) format='DD MMM YYYY'}}
+          </td>
+        </tr>
+        {{#policy.module.spouse_included}}
+        <tr>
+          <td>
+            <strong>Spouse Included?</strong>
+          </td>
+          <td>
+            Yes
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Spouse Details</strong>
+          </td>
+          <td>
+            <strong>Cover amount:</strong> {{zarString policy.module.spouse_cover_amount}}
+            <br>
+            <br>
+            First name: {{policy.module.spouse.first_name}}
+            <br>
+            Last name: {{policy.module.spouse.last_name}}
+            <br>
+            {{#if policy.module.spouse.date_of_birth}}
+            Date of birth: {{dateFormat policy.module.spouse.date_of_birth format='DD MMM YYYY'}}
+            {{else}}
+            Date of birth: - 
+            {{/if}}
+          </td>
+        </tr>
+        {{/policy.module.spouse_included}}
+        {{^policy.module.spouse_included}}
+        <tr>
+          <td>
+            <strong>Spouse Included?</strong>
+          </td>
+          <td>
+            No
+          </td>
+        </tr>
+        {{/policy.module.spouse_included}}
+        {{#policy.module.children_included}}
+        <tr>
+          <td>
+            <strong>Children Included?</strong>
+          </td>
+          <td>
+            Yes
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Children Details</strong>
+          </td>
+          <td>
+            <strong>Cover amount:</strong> {{zarString policy.module.children_cover_amount}}
+            {{#policy.module.children}}
+            <br>
+            <br>
+            First name: {{first_name}}
+            <br>
+            Last name: {{last_name}}
+            <br>
+            {{#if date_of_birth}}
+            Date of birth: {{dateFormat date_of_birth format='DD MM YYYY'}}
+            {{else}}
+            Date of birth: -
+            {{/if}}
+            <br>
+            <br>
+            {{/policy.module.children}}
+          </td>
+        </tr>
+        {{/policy.module.children_included}}
+        {{^policy.module.children_included}}
+        <tr>
+          <td>
+            <strong>Children Included?</strong>
+          </td>
+          <td>
+            No
+          </td>
+        </tr>
+        {{/policy.module.children_included}}
+        {{#policy.module.extended_family_included}}
+        <tr>
+          <td>
+            <strong>Extended Family Included?</strong>
+          </td>
+          <td>
+            Yes
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Extended Family Details</strong>
+          </td>
+          <td>
+            <strong>Cover amount:</strong> {{ zarString policy.module.extended_family_cover_amount}}
+            {{#policy.module.extended_family}}
+            <br>
+            <br>
+            First name: {{first_name}}
+            <br>
+            Last name: {{last_name}}
+            <br>
+            Date of birth: {{dateFormat date_of_birth format='DD MMM YYYY'}}
+            <br>
+            {{#ifEquals policy.module.extended_family.relationship 'parent_in_law'}}
+            Relationship to Insured: parent-in-law
+            {{/ifEquals}}
+            {{#ifEquals policy.module.extended_family.relationship 'additional_spouse'}}
+            Relationship to Insured: additional spouse
+            {{/ifEquals}}
+            <br>
+            <br>
+            {{/policy.module.extended_family}}
+          </td>
+        </tr>
+        {{/policy.module.extended_family_included}}
+        {{^policy.module.extended_family_included}}
+        <tr>
+          <td>
+            <strong>Extended Family Included?</strong>
+          </td>
+          <td>
+            No
+          </td>
+        </tr>
+        {{/policy.module.extended_family_included}}
+      </table>
+    </div>
+  </body>
+</html>

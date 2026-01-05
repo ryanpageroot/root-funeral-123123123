@@ -1,0 +1,511 @@
+[
+  {
+    "key": "start_date",
+    "type": "date-picker",
+    "label": "Select a start date *",
+    "outputPath": "start_date",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "end_date",
+    "type": "date-picker",
+    "label": "Select a end date *",
+    "outputPath": "end_date",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ]
+  },
+  {
+    "key": "main_member_heading",
+    "type": "section-header",
+    "label": "Main member",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    }
+  },
+  {
+    "key": "cover_amount",
+    "type": "currency",
+    "label": "Cover amount *",
+    "props": {
+      "prefix": "USD",
+      "decimal": true
+    },
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 0,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ]
+  },
+  {
+    "key": "age",
+    "type": "number",
+    "label": "Age *",
+    "props": {
+      "decimal": true
+    },
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 18,
+          "type": "greaterThanNumber"
+        }
+      },
+      {
+        "validation": {
+          "max": 70,
+          "type": "lessThanNumber"
+        }
+      }
+    ]
+  },
+  {
+    "key": "deceased_gender",
+    "type": "select",
+    "label": "Gender",
+    "options": [
+      {
+        "label": "Male",
+        "value": "male"
+      },
+      {
+        "label": "Female",
+        "value": "female"
+      }
+    ],
+    "outputPath": "gender"
+  },
+  {
+    "key": "deceased_gender_blank_space",
+    "type": "blank-space"
+  },
+  {
+    "key": "deceased_gender_horizontal_line",
+    "type": "horizontal-line"
+  },
+  {
+    "key": "spouse_section_header",
+    "type": "section-header",
+    "label": "Spouse",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    }
+  },
+  {
+    "key": "spouse_included",
+    "type": "checkbox",
+    "label": "Include spouse",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  },
+  {
+    "key": "spouse_included_blank_space",
+    "type": "blank-space",
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "spouse_age",
+    "type": "number",
+    "label": "Age *",
+    "outputPath": "spouse.age",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 18,
+          "type": "greaterThanNumber"
+        }
+      },
+      {
+        "validation": {
+          "max": 70,
+          "type": "lessThanNumber"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "spouse_cover_amount_blank_space",
+    "type": "blank-space"
+  },
+  {
+    "key": "spouse_details_section_header",
+    "type": "section-header",
+    "label": "Details of spouse",
+    "props": {
+      "headingTag": "h5"
+    },
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "spouse_cover_amount",
+    "type": "currency",
+    "label": "Cover amount for spouse  *",
+    "props": {
+      "prefix": "Rs"
+    },
+    "outputPath": "spouse_cover_amount",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 500000,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "spouse_gender",
+    "type": "select",
+    "label": "Gender *",
+    "options": [
+      {
+        "label": "Male",
+        "value": "male"
+      },
+      {
+        "label": "Female",
+        "value": "female"
+      }
+    ],
+    "outputPath": "spouse.gender",
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "spouse_gender_horizontal_line",
+    "type": "horizontal-line"
+  },
+  {
+    "key": "child_details_section_header",
+    "type": "section-header",
+    "label": "Child details",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    }
+  },
+  {
+    "key": "children_included",
+    "type": "checkbox",
+    "label": "Include children",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  },
+  {
+    "key": "children_included_blank_space",
+    "type": "blank-space"
+  },
+  {
+    "key": "cover_amount_children",
+    "type": "currency",
+    "label": "Cover amount for children *",
+    "props": {
+      "prefix": "Rs"
+    },
+    "outputPath": "children_cover_amount",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 500000,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "children_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "props": {
+      "addButtonLabel": "Add child"
+    },
+    "maxNumber": 20,
+    "components": [
+      {
+        "key": "child_details_list_section_header",
+        "type": "section-header",
+        "label": "Child details",
+        "props": {
+          "headingTag": "h5",
+          "indexNumber": true
+        }
+      },
+      {
+        "key": "age",
+        "type": "number",
+        "label": "Age *",
+        "outputPath": "children",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 0,
+              "type": "greaterThanNumber"
+            }
+          },
+          {
+            "validation": {
+              "max": 21,
+              "type": "lessThanNumber"
+            }
+          }
+        ]
+      }
+    ],
+    "outputPathList": "children",
+    "displayConditions": [
+      {
+        "path": "children_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "children_list_horizontal_line",
+    "type": "horizontal-line"
+  },
+  {
+    "key": "extended_family_section_header",
+    "type": "section-header",
+    "label": "Extended Family",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    }
+  },
+  {
+    "key": "extended_family_included",
+    "type": "checkbox",
+    "label": "Include extended family",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "defaultValue": false
+  },
+  {
+    "key": "extended_family_included_blank_space",
+    "type": "blank-space"
+  },
+  {
+    "key": "extended_family_cover_amount",
+    "type": "currency",
+    "label": "Cover amount for extended family *",
+    "props": {
+      "prefix": "Rs"
+    },
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 500000,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "extended_family_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "props": {
+      "addButtonLabel": "Add extend family member"
+    },
+    "maxNumber": 20,
+    "components": [
+      {
+        "key": "extended_family_list_section_header",
+        "type": "section-header",
+        "label": "Extended family details",
+        "props": {
+          "headingTag": "h5",
+          "indexNumber": true
+        }
+      },
+      {
+        "key": "age",
+        "type": "number",
+        "label": "Age *",
+        "outputPath": "extended_family",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          },
+          {
+            "validation": {
+              "min": 0,
+              "type": "greaterThanNumber"
+            }
+          },
+          {
+            "validation": {
+              "max": 80,
+              "type": "lessThanNumber"
+            }
+          }
+        ]
+      },
+      {
+        "key": "gender",
+        "type": "select",
+        "label": "Gender *",
+        "options": [
+          {
+            "label": "Male",
+            "value": "male"
+          },
+          {
+            "label": "Female",
+            "value": "female"
+          }
+        ],
+        "outputPath": "extended_family"
+      }
+    ],
+    "outputPathList": "extended_family",
+    "displayConditions": [
+      {
+        "path": "extended_family_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "extended_family_completed_horizontal_line",
+    "type": "horizontal-line"
+  }
+]

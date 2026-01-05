@@ -1,0 +1,19 @@
+# Replit configuration for Root Funeral Internationalisation
+run = "echo 'Welcome to Root Funeral Internationalisation'"
+language = "nodejs"
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+NODE_ENV = "development"
+
+[packager]
+language = "nodejs"
+
+[languages.javascript]
+pattern = "**/*.js"
+syntax = "javascript"
+
+[unitTest]
+language = "nodejs"

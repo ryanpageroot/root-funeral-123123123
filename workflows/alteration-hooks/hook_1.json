@@ -1,0 +1,78 @@
+[
+  {
+    "key": "main_member_heading",
+    "type": "section-header",
+    "label": "Main member",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    }
+  },
+  {
+    "key": "cover_amount",
+    "type": "currency",
+    "label": "Cover amount *",
+    "props": {
+      "prefix": "Rs"
+    },
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 0,
+          "type": "greaterThanCurrency"
+        }
+      },
+      {
+        "validation": {
+          "max": 10000000,
+          "type": "lessThanCurrency"
+        }
+      }
+    ]
+  },
+  {
+    "key": "age",
+    "type": "number",
+    "label": "Age *",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      },
+      {
+        "validation": {
+          "min": 18,
+          "type": "greaterThanNumber"
+        }
+      },
+      {
+        "validation": {
+          "max": 70,
+          "type": "lessThanNumber"
+        }
+      }
+    ]
+  },
+  {
+    "key": "deceased_gender",
+    "type": "select",
+    "label": "Gender",
+    "options": [
+      {
+        "label": "Male",
+        "value": "male"
+      },
+      {
+        "label": "Female",
+        "value": "female"
+      }
+    ],
+    "outputPath": "gender"
+  }
+]

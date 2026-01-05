@@ -1,0 +1,341 @@
+- id: funeral
+  title: Funeral
+  copyComponents:
+    - type: markdown
+      content: >-
+        The funeral cover product is a policy providing quick access to cash
+        after an insured’s passing, to cover the immediate expenses of their
+        death, such as a funeral. A funeral policy generally includes one main
+        member, with the option to add a spouse, children and extended family
+        members.
+
+
+        The module identifier is `root_funeral`.
+
+
+        Funeral policies have the following module object:
+    - id: policy-object-funeral-parameters
+      type: list
+      title: module object
+      content:
+        - label: type
+          markdownDescription: _string_. Module type. `root_funeral` in this case.
+        - label: cover_amount
+          markdownDescription: _integer_. The cover amount for the main member, in cents.
+        - label: age
+          markdownDescription: _integer_. The age of the main member.
+        - label: gender
+          detail: optional
+          markdownDescription: _string_. The main member's gender (`male` or `female`).
+        - label: spouse_included
+          markdownDescription: _boolean_. Indicates if a spouse is covered by the policy.
+        - label: spouse_cover_amount
+          detail: optional
+          markdownDescription: >-
+            _integer_. The cover amount for the spouse, in cents. Only included
+            if the policy covers the spouse (indicated by `spouse_included`).
+        - label: spouse
+          detail: optional
+          markdownDescription: >-
+            _[object]_. An object containing the spouse's first/last name, and
+            date of birth. Only included if the policy covers the spouse
+            (indicated by `spouse_included`).
+        - label: children_included
+          markdownDescription: _boolean_. Indicates if children are covered by the policy.
+        - label: children_cover_amount
+          detail: optional
+          markdownDescription: >-
+            _integer_. The cover amount for each child, in cents. Only included
+            if the policy covers children (indicated by `children_included`).
+        - label: children
+          detail: optional
+          markdownDescription: >-
+            _[object]_. An array of objects containing each child's first/last
+            name, and date of birth. Only included if the policy covers children
+            (indicated by `children_included`).
+        - label: extended_family_included
+          markdownDescription: _boolean_. Indicates if extended family are covered by the policy.
+        - label: extended_family_cover_amount
+          detail: optional
+          markdownDescription: >-
+            _integer_. The cover amount for each family member, in cents. Only
+            included if the policy covers extended family members (indicated by
+            `extended_family_included`).
+        - label: extended_family
+          detail: optional
+          markdownDescription: >-
+            _[object]_. An array of objects containing each family member's
+            first/last name, date of birth and relationship to the insured. Only
+            included if the policy covers extended family members (indicated by
+            `extended_family_included`).
+- id: funeral-quote
+  title: Getting a quote
+  hideInSidebar: true
+  copyComponents:
+    - type: markdown
+      content: >-
+        To get a quote for funeral cover, details are not yet required. The
+        quote parameters will be validated against the detailed parameters when
+        the application is created (e.g. Extended family member's ages compared
+        to the ID's passed in).
+    - id: product-modules-funeral-individual-quote
+      type: list
+      title: body parameters
+      content:
+        - label: type
+          markdownDescription: >-
+            _string_. The module type to retrieve a quote for. In this case,
+            `root_funeral`.
+        - label: cover_amount
+          markdownDescription: >-
+            _integer_. Amount to cover for the main policyholder, in cents.
+            Should be between R5k and R100k, inclusive.
+        - label: age
+          markdownDescription: >-
+            _integer_. The main policyholder's age. Should be between 18 and 70,
+            inclusive.
+        - label: gender
+          detail: optional
+          markdownDescription: >-
+            _string_. The main policyholder's gender (either `male` or
+            `female`). If this value is _not_ provided, a non-gender depedendent
+            rate will be used to calculate the premium.
+        - label: spouse_included
+          markdownDescription: _boolean_. Indicates if a spouse should be included in the cover.
+        - label: spouse_cover_amount
+          markdownDescription: >-
+            _integer_. Amount to cover for the spouse, in cents. This is
+            required if `spouse_included` is set to true. Should be between R5k
+            and R100k, inclusive.
+        - label: spouse
+          detail: optional
+          markdownDescription: >-
+            _object_. The spouse's basic information - see below. This is
+            required if `spouse_included` is set to true.
+        - label: children_included
+          markdownDescription: _boolean_. Indicates if children should be included in the cover.
+        - label: children_cover_amount
+          markdownDescription: >-
+            _integer_. Amount to cover for the children, in cents. This is
+            required if `children_included` is set to true. Should be between
+            R5k and R100k, inclusive.
+        - label: children
+          detail: optional
+          markdownDescription: >-
+            _[object]_. An array of basic information for each child. When
+            children are included and this value is _not_ provided, a non-age
+            depedendent rate will be used to calculate the premium.
+        - label: extended_family_included
+          markdownDescription: >-
+            _boolean_. Indicates if extended family should be included in the
+            cover.
+        - label: extended_family_cover_amount
+          markdownDescription: >-
+            _integer_. Amount to cover for the extended family, in cents. This
+            is required if `extended_family_included` is set to true. Should be
+            between R5k and R100k, inclusive.
+        - label: extended_family
+          detail: optional
+          markdownDescription: >-
+            _[object]_. An array of basic information for each family member -
+            see below. When extended family are included and this value is _not_
+            provided, a non-age depedendent rate will be used to calculate the
+            premium.
+    - type: markdown
+      content: >-
+        When including the `spouse` value in the quote, the following format
+        should be used:
+    - id: product-modules-funeral-individual-quote-spouse
+      type: list
+      content:
+        - label: age
+          markdownDescription: >-
+            _integer_. Indicates the age of the spouse. Should be between 18 and
+            70, inclusive.
+        - label: gender
+          markdownDescription: >-
+            _string_. The spouse's gender (either `male` or `female`). *Note:*
+            if main member gender is specified, this field is required. If main
+            member gender is not specified, this field must be excluded.
+    - type: markdown
+      content: >-
+        When including the `children` value in the quote, the following format
+        should be used:
+    - id: product-modules-funeral-individual-quote-child
+      type: list
+      content:
+        - label: age
+          markdownDescription: >-
+            _integer_. Indicates the age of the child. Should be between 0 and
+            21, inclusive.
+    - type: markdown
+      content: >-
+        When including the `extended_family` value in the quote, the following
+        format should be used:
+    - id: product-modules-funeral-individual-quote-family
+      type: list
+      content:
+        - label: age
+          markdownDescription: >-
+            _integer_. Indicates the age of the family member. Should be between
+            0 and 80, inclusive.
+        - label: gender
+          detail: optional
+          markdownDescription: _string_. The family member's gender (either `male` or `female`).
+  exampleComponents:
+    - id: funeral-quote-endpoint
+      type: code
+      blockType: endpoint
+      languages:
+        bash: POST https://sandbox.root.co.za/v1/insurance/quotes
+      forceLanguage: bash
+    - id: funeral-quote-request
+      type: code
+      blockType: request
+      languages:
+        curl: |
+          curl https://sandbox.root.co.za/v1/insurance/quotes \
+            --request POST \
+            -u test_key_tYILz1640w9q5n5kNQUZ: \
+            -H "Content-Type: application/json" \
+            -d '{
+              "type": "root_funeral",
+              "cover_amount": 3200000,
+              "age": 28,
+              "spouse_included": false,
+              "children_included": false,
+              "extended_family_included": false
+            }'
+    - id: funeral-quote-response
+      type: code
+      blockType: response
+      languages:
+        json:
+          - module:
+              age: 28
+              type: root_funeral
+              cover_amount: 3200000
+              spouse_included: false
+              children_included: false
+              extended_family_included: false
+            created_at: '2018-08-02T15:09:43.000Z'
+            sum_assured: 3200000
+            base_premium: 5450
+            package_name: 'Funeral Cover: Main Member'
+            quote_package_id: 2abe3f86-533d-415f-88ab-3135a40268c3
+            suggested_premium: 7007
+      forceLanguage: json
+- id: funeral-application
+  title: Creating an application
+  hideInSidebar: true
+  copyComponents:
+    - id: create-application-funeral-arguments
+      type: list
+      content:
+        - label: quote_package_id
+          markdownDescription: >-
+            _string_. The ID of the quote package retrieved from the [quote
+            endpoint](#funeral-quote).
+        - label: policyholder_id
+          markdownDescription: >-
+            _string_. The ID of the policyholder retrieved from the [create
+            policyholder endpoint](#create-a-policyholder).
+        - label: spouse
+          detail: optional
+          markdownDescription: >-
+            _object_. The spouses' personal details - see below. Required if the
+            quote is set to include a spouse.
+        - label: children
+          detail: optional
+          markdownDescription: >-
+            _[object]_. The childrens' personal details - see below. Required if
+            the quote is set to include children.
+        - label: extended_famliy
+          detail: optional
+          markdownDescription: >-
+            _[object]_. The extended family members' personal details - see
+            below. Required if the quote is set to include extended family.
+    - type: markdown
+      content: >-
+        When including either `spouse`, or `children` in the application
+        request, the following format should be used:
+    - id: create-application-funeral-person-arguments
+      type: list
+      title: Arguments
+      content:
+        - label: first_name
+          markdownDescription: _string_. The spouse or child's first name.
+        - label: last_name
+          markdownDescription: _string_. The spouse or child's last name.
+        - label: date_of_birth
+          markdownDescription: >-
+            _string_. The spouse or child's date of birth in `YYYYMMDD` format.
+            Note that the `date_of_birth` should coincide with the age provided
+            in the quote.
+    - type: markdown
+      content: >-
+        When including `extended_family` in the application request, the
+        following format should be used:
+    - id: create-application-funeral-extended-family-arguments
+      type: list
+      title: Arguments
+      content:
+        - label: first_name
+          markdownDescription: _string_. The family member's first name.
+        - label: last_name
+          markdownDescription: _string_. The family member's last name.
+        - label: date_of_birth
+          markdownDescription: >-
+            _string_. The family member's date of birth in `YYYYMMDD` format.
+            Note that the `date_of_birth` should coincide with the age provided
+            in the quote.
+        - label: relationship
+          markdownDescription: >-
+            _string_. The family member's relationship to the insured
+            individual. Possible options are `parent`, `parent_in_law`,
+            `brother`, `sister`, `uncle`, `aunt`, `nephew`, `niece`,
+            `additional_spouse`, or `additional_child`.
+    - type: markdown
+      content: >-
+        Once the application has been created, you can use the application to
+        [issue a policy](#issue-a-policy).
+  exampleComponents:
+    - id: funeral-application-endpoint
+      type: code
+      blockType: endpoint
+      languages:
+        bash: POST https://sandbox.root.co.za/v1/insurance/applications
+      forceLanguage: bash
+    - id: funeral-application-request
+      type: code
+      blockType: request
+      languages:
+        curl: |
+          curl https://sandbox.root.co.za/v1/insurance/applications \
+            --request POST \
+            -u test_key_tYILz1640w9q5n5kNQUZ: \
+            -H "Content-Type: application/json" \
+            -d '{
+              "quote_package_id": "d3d13c48-4dc3-4816-8d01-de3215878225",
+              "policyholder_id": "8349345c-a6c5-4bf9-8ebb-6bbfc1628715"
+            }'
+    - id: funeral-application-response
+      type: code
+      blockType: response
+      languages:
+        json:
+          module:
+            age: 28
+            type: root_funeral
+            cover_amount: 3200000
+            spouse_included: false
+            children_included: false
+            extended_family_included: false
+          created_at: '2018-08-07T21:39:42Z'
+          sum_assured: 3200000
+          base_premium: 5450
+          package_name: 'Funeral Cover: Main Member'
+          application_id: 6667e48e-fcbe-4a9f-83d8-8b7a32714d5c
+          monthly_premium: 7007
+          policyholder_id: 58d96b42-03f7-4a7b-b534-22d872f60070
+      forceLanguage: json

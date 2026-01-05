@@ -1,0 +1,284 @@
+[
+  {
+    "key": "spouse-section-header",
+    "type": "section-header",
+    "label": "Spouse",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    },
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "first_name",
+    "type": "text",
+    "label": "First name *",
+    "outputPath": "spouse.first_name",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "last_name",
+    "type": "text",
+    "label": "Last name *",
+    "outputPath": "spouse.last_name",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "date_of_birth",
+    "type": "date-picker",
+    "label": "Date of birth",
+    "outputPath": "spouse.date_of_birth",
+    "validators": [
+      {
+        "validation": {
+          "type": "required"
+        }
+      }
+    ],
+    "displayConditions": [
+      {
+        "path": "spouse_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "children-section-header",
+    "type": "section-header",
+    "label": "Children",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    },
+    "displayConditions": [
+      {
+        "path": "children_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "maxNumber": 20,
+    "components": [
+      {
+        "key": "children-list-section-header",
+        "type": "section-header",
+        "label": "Details of child",
+        "props": {
+          "headingTag": "h5",
+          "indexNumber": true
+        }
+      },
+      {
+        "key": "first_name",
+        "type": "text",
+        "label": "First name *",
+        "outputPath": "children",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "last_name",
+        "type": "text",
+        "label": "Last name *",
+        "outputPath": "children",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "date_of_birth",
+        "type": "date-picker",
+        "label": "Date of birth *",
+        "outputPath": "children",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      }
+    ],
+    "outputPathList": "children",
+    "displayConditions": [
+      {
+        "path": "children_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "key": "extended-family-section-header",
+    "type": "section-header",
+    "label": "Extended Family",
+    "props": {
+      "fontWeight": "bold",
+      "headingTag": "h5"
+    },
+    "displayConditions": [
+      {
+        "path": "extended_family_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "label": "List",
+    "maxNumber": 20,
+    "components": [
+      {
+        "key": "extended-family-list-section-header",
+        "type": "section-header",
+        "label": "Details of Family member",
+        "props": {
+          "headingTag": "h5",
+          "indexNumber": true
+        }
+      },
+      {
+        "key": "first_name",
+        "type": "text",
+        "label": "First name *",
+        "outputPath": "extended_family",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "last_name",
+        "type": "text",
+        "label": "Last name *",
+        "outputPath": "extended_family",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "date_of_birth",
+        "type": "date-picker",
+        "label": "Date of birth *",
+        "outputPath": "extended_family",
+        "validators": [
+          {
+            "validation": {
+              "type": "required"
+            }
+          }
+        ]
+      },
+      {
+        "key": "relationship",
+        "type": "select",
+        "label": "Deceased individual *",
+        "options": [
+          {
+            "label": "Parent",
+            "value": "parent"
+          },
+          {
+            "label": "Parent in law",
+            "value": "parent_in_law"
+          },
+          {
+            "label": "Brother",
+            "value": "brother"
+          },
+          {
+            "label": "Sister",
+            "value": "sister"
+          },
+          {
+            "label": "Uncle",
+            "value": "uncle"
+          },
+          {
+            "label": "Aunt",
+            "value": "aunt"
+          },
+          {
+            "label": "Nephew",
+            "value": "nephew"
+          },
+          {
+            "label": "Niece",
+            "value": "niece"
+          },
+          {
+            "label": "Additional spouse",
+            "value": "additional_spouse"
+          },
+          {
+            "label": "Additional child",
+            "value": "additional_child"
+          }
+        ],
+        "outputPath": "extended_family"
+      }
+    ],
+    "outputPathList": "extended_family",
+    "displayConditions": [
+      {
+        "path": "extended_family_included",
+        "value": true,
+        "condition": "==="
+      }
+    ]
+  }
+]

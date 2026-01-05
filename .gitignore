@@ -1,0 +1,11 @@
+# Ignore Root authentication file
+.root-auth
+
+# Sandbox output
+sandbox/output/*
+
+# Preview server (auto-generated, not needed in repo)
+preview/
+
+# Node modules
+node_modules/

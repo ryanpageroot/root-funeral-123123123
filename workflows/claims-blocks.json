@@ -1,0 +1,295 @@
+[
+  {
+    "block": {
+      "key": "example_group_block_collapsible",
+      "type": "group",
+      "title": "Collapsible group block",
+      "blocks": [
+        {
+          "block": {
+            "key": "free_text_block_nested_collapsible",
+            "type": "input.text",
+            "title": "Nested free text"
+          }
+        }
+      ],
+      "collapsible": true
+    }
+  },
+  {
+    "block": {
+      "key": "example_group_block_non_collapsible",
+      "type": "group",
+      "title": "Non collapsible group block",
+      "blocks": [
+        {
+          "block": {
+            "key": "free_text_block_nested_non_collapsible",
+            "type": "input.text",
+            "title": "Nested free text"
+          }
+        }
+      ],
+      "collapsible": false
+    }
+  },
+  {
+    "block": {
+      "key": "example_radio_block",
+      "type": "radio",
+      "title": "Select marital status:",
+      "options": [
+        {
+          "key": "single",
+          "value": "Single"
+        },
+        {
+          "key": "married",
+          "value": "Married"
+        },
+        {
+          "key": "divorced",
+          "value": "Divorced"
+        },
+        {
+          "key": "widowed",
+          "value": "Widowed"
+        },
+        {
+          "key": "separated",
+          "value": "Separated"
+        }
+      ]
+    }
+  },
+  {
+    "block": {
+      "key": "example_paragraph_block",
+      "type": "input.paragraph",
+      "title": "Insert incident description",
+      "max_length": 20,
+      "min_length": 8,
+      "placeholder": "Please describe incident in graphic detail"
+    }
+  },
+  {
+    "block": {
+      "key": "example_markdown_block",
+      "type": "markdown",
+      "markdown": "**MAR**_k_`d o w n`"
+    }
+  },
+  {
+    "block": {
+      "key": "example_date_block",
+      "type": "input.date",
+      "title": "Date input:",
+      "default_value": "{{ dateNow }}"
+    }
+  },
+  {
+    "block": {
+      "key": "example_alert_block",
+      "type": "alert",
+      "color": "warning",
+      "markdown": "This is an example alert - check it out!"
+    }
+  },
+  {
+    "block": {
+      "key": "shortname_block",
+      "type": "input.text",
+      "title": "Shortname for {{ claim.claim_number }}",
+      "max_length": 20,
+      "min_length": 2,
+      "description": "Give this claim a shortname:",
+      "placeholder": "ABC123 4"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_opened_block",
+      "type": "input.text",
+      "title": "Claim opened on",
+      "description": "Enter the date on which the claim was opened",
+      "placeholder": "{{ formatDate dateNow 'DD MMM YYYY' }}"
+    },
+    "show_if": "{{#ifEquals claim.claim_status 'xxxxx' }}true{{else}}false{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "free_text_block",
+      "type": "input.text",
+      "title": "Free text"
+    },
+    "show_if": "{{#ifEquals claim.claim_status 'xxxxx' }}true{{else}}false{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "checkbox_block",
+      "type": "checkbox",
+      "title": "Add custom payout amount",
+      "default_value": false
+    }
+  },
+  {
+    "block": {
+      "key": "currency_amount",
+      "type": "input.currency",
+      "title": "Custom payout amount"
+    },
+    "show_if": "{{#ifEquals claim.claim_status 'xxxxx' }}true{{else}}false{{/ifEquals}}"
+  },
+  {
+    "block": {
+      "key": "payout_details_heading",
+      "type": "heading",
+      "title": "Payout details for beneficiaries of policy {{ claim.policy.policy_number }}"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_details_divider",
+      "type": "divider"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_details_account_type_dropdown",
+      "type": "dropdown",
+      "title": "Bank name",
+      "options": [
+        {
+          "key": "cheque_account",
+          "value": "Cheque account"
+        },
+        {
+          "key": "savings_account",
+          "value": "Savings account"
+        }
+      ],
+      "default_value": "cheque_account"
+    }
+  },
+  {
+    "block": {
+      "key": "payout_details_bank_name",
+      "type": "input.text",
+      "title": "Bank name",
+      "placeholder": "ABSA"
+    },
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "payout_details_branch_code",
+      "type": "input.text",
+      "title": "Branch code",
+      "placeholder": "12345"
+    },
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "payout_details_account_type",
+      "type": "input.text",
+      "title": "Account type",
+      "placeholder": "cheque"
+    },
+    "show_if": "{{#ifEquals claim.claim_status 'xxxxx' }}true{{else}}false{{/ifEquals}}",
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "payout_details_account_number",
+      "type": "input.text",
+      "title": "Account number",
+      "placeholder": "123456789"
+    },
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "claim_payout_request",
+      "type": "payout_request",
+      "payee": {
+        "type": "policyholder",
+        "amount": "{{ multiply claim.policy.sum_assured 0.14 }}",
+        "percentage": 100,
+        "payment_details": {
+          "type": "eft",
+          "details": {
+            "bank_name": "{{ claim.block_states.payout_details_bank_name.value }}",
+            "branch_code": "{{ claim.block_states.payout_details_branch_code.value }}",
+            "account_type": "{{ claim.block_states.payout_details_account_type_dropdown.option_key }}",
+            "account_number": "{{ claim.block_states.payout_details_account_number.value }}"
+          }
+        },
+        "policyholder_id": "{{ claim.policy.policyholder_id }}"
+      },
+      "title": "Payout request",
+      "amount": "{{ claim.policy.sum_assured }}",
+      "description": "Monetary payout to be actioned on approval of claim {{ claim.claim_number }} "
+    }
+  },
+  {
+    "block": {
+      "key": "claim_fulfillment_request",
+      "type": "fulfillment_request",
+      "title": "Fulfillment request",
+      "description": "To be provided to claimant.",
+      "fulfillment_data": {
+        "cds_account": "{{ claim.block_states.claim_opened_block.value }}",
+        "cds_account_number": "{{ claim.block_states.shortname_block.value }}"
+      },
+      "fulfillment_type_key": "cds_account"
+    }
+  },
+  {
+    "block": {
+      "key": "claim_annuity_request_1",
+      "type": "annuity_request",
+      "amount": "{{ claim.policy.sum_assured }}",
+      "duration": {
+        "count": 5
+      },
+      "frequency": {
+        "type": "monthly",
+        "time_of_day": "07:00",
+        "day_of_month": 1
+      },
+      "description": "Payouts will be made to the policyholder in the intervals specified below"
+    }
+  },
+  {
+    "block": {
+      "key": "example_number_input",
+      "max": 48,
+      "min": 1,
+      "type": "input.number",
+      "title": "Number of months spent unemployed",
+      "placeholder": 24
+    },
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "example_time_input",
+      "type": "input.time",
+      "title": "Select time of incident",
+      "placeholder": "10:00"
+    },
+    "required_if": "true"
+  },
+  {
+    "block": {
+      "key": "payout_amount",
+      "max": 25000000,
+      "min": 5000000,
+      "type": "input.currency",
+      "title": "Payout amount",
+      "isoCode": "USD",
+      "placeholder": 10000000
+    }
+  }
+]

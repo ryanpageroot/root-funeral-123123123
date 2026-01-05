@@ -1,0 +1,11 @@
+{
+  "name": "root_funeral_internationalisation",
+  "version": "1.0.0",
+  "description": "Root Platform product module: root_funeral_internationalisation",
+  "scripts": {
+    "preview": "node preview/server.js"
+  },
+  "dependencies": {
+    "@rootplatform/cli": "latest"
+  }
+}
